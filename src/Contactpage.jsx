@@ -1,16 +1,45 @@
-// import { Checkbox } from "@material-ui/core";
-// import Picker from './picker';
 import React,{useState,useEffect}  from "react";
 import Table from "./Table";
+import {CSVLink} from "react-csv"
+
+
 function Contactpage(){
  const[data,setdata] = useState([])
  const[query,setQuery] = useState("")
-//  console.log(query)
 console.log(data)
+
 const search = (data)=>{
     console.log(data.filter((item)=> item.email.includes(query.trim())))
     return data.filter((item)=> item.email.includes(query.trim()))
 }
+const headers =[
+    {
+      label:"Name",key:"name"
+     
+    }, {
+      label:"Designation",key:"designation"
+    },
+    {
+      label:"Company",key:"company"
+    },
+    {
+        label:"Industry",key:"industry"
+      },
+      {
+        label:"Email",key:"email"
+      },
+      {
+        label:"Phone number",key:"phone number"
+      },
+      {
+        label:"Country",key:"country"
+      }
+   ]
+   const csvLink={
+    filename:"file.csv",
+    headers:headers,
+    data:data
+  }
  useEffect(()=>{
 fetch('https://jsonplaceholder.typicode.com/users')
 .then((result)=>{
@@ -20,8 +49,8 @@ fetch('https://jsonplaceholder.typicode.com/users')
 })
 },[])
    
-//   console.log(data)
-console.log()
+
+
     return(
         <div>
             <div className="logo">
@@ -44,10 +73,8 @@ console.log()
             <input type="date" className="date" lable="select date"/>
             <span><button className="filter">filter</button></span>
             <span><button className="delete"><i class="fa fa-trash" aria-hidden="true"></i>delete</button></span>
-            <span><button className="import"><i class="fa fa-download" aria-hidden="true"></i>import</button></span>
-            <span><button className="export"><i class="fa fa-upload" aria-hidden="true"></i>export</button></span>
-            
-
+            <span> <button className="import"><i class="fa fa-download" aria-hidden="true"></i>import</button></span>
+            <span><CSVLink {...csvLink}><button className="export"><i class="fa fa-upload" aria-hidden="true"></i>export</button></CSVLink></span>
                 <Table data={search(data)}/>
             </div>
             </div>
