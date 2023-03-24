@@ -30,18 +30,24 @@ console.log()
                 <p className="dashboard">Dashboard</p>
             </div>
             <div className="total_contacts"><p className="text_tc">Total contacts</p></div>
-            
+            <button className="logout"><i class="fa fa-sign-out" aria-hidden="true">Log out</i></button>
             </div>
             <div className="heading">
             <span className="contact_text">Total Contacts</span>
+            
             <input className="search" placeholder="Search by Email Id....." type="text" onChange={(e)=> setQuery(e.target.value)} />
-           
             <span className="user_name">name</span>
             <div className="post">Super Admin</div>
             </div>
             <div>
-            <span ></span>
             <div>
+            <input type="date" className="date" lable="select date"/>
+            <span><button className="filter">filter</button></span>
+            <span><button className="delete"><i class="fa fa-trash" aria-hidden="true"></i>delete</button></span>
+            <span><button className="import"><i class="fa fa-download" aria-hidden="true"></i>import</button></span>
+            <span><button className="export"><i class="fa fa-upload" aria-hidden="true"></i>export</button></span>
+            
+
                 <Table data={search(data)}/>
             </div>
             </div>
