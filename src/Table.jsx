@@ -1,7 +1,7 @@
 import React from "react"
-
 const Table = ({data})=>{
     return(
+        <div>
         <table className="table">
                     <tr className="table-heading">
                         <td className="checkbox"> <input type="checkbox" /></td>
@@ -34,6 +34,7 @@ const Table = ({data})=>{
                     )
                 }
                 </table>
+                </div>
     )
 }
 
